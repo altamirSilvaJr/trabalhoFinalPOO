@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViewController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -24,7 +24,7 @@
                         <Label layoutX="275.0" layoutY="26.0" text="Desconto" />
                         <TextField layoutX="347.0" layoutY="22.0" />
                         <Label layoutX="20.0" layoutY="66.0" text="Adicionar produto" />
-                        <Button layoutX="128.0" layoutY="62.0" mnemonicParsing="false" text="+" />
+                        <Button fx:id="btAddProd" layoutX="128.0" layoutY="62.0" mnemonicParsing="false" onAction="#onbtAddProdAction" text="+" />
                         <Button layoutX="537.0" layoutY="324.0" mnemonicParsing="false" text="Salvar" />
                         <Button layoutX="466.0" layoutY="324.0" mnemonicParsing="false" text="Cancelar" />
                         <Label layoutX="369.0" layoutY="292.0" text="Valor total:" />
@@ -70,16 +70,16 @@
                         <Label layoutX="35.0" layoutY="70.0" text="CNPJ:" />
                         <Label layoutX="34.0" layoutY="107.0" text="Telefone:" />
                         <Label layoutX="35.0" layoutY="144.0" text="Endereço:" />
-                        <TextField layoutX="98.0" layoutY="33.0" prefHeight="25.0" prefWidth="467.0" />
-                        <TextField layoutX="99.0" layoutY="66.0" prefHeight="25.0" prefWidth="466.0" />
-                        <TextField layoutX="99.0" layoutY="103.0" prefHeight="25.0" prefWidth="466.0" />
-                        <TextField layoutX="99.0" layoutY="140.0" prefHeight="25.0" prefWidth="466.0" />
-                        <Button layoutX="513.0" layoutY="186.0" mnemonicParsing="false" text="Salvar" />
-                        <Button layoutX="438.0" layoutY="186.0" mnemonicParsing="false" text="Cancelar" />
+                        <TextField fx:id="inputNomeFornecedor" layoutX="98.0" layoutY="33.0" prefHeight="25.0" prefWidth="467.0" />
+                        <TextField fx:id="inputCnpjFornecedor" layoutX="99.0" layoutY="66.0" prefHeight="25.0" prefWidth="466.0" />
+                        <TextField fx:id="inputTelefoneFornecedor" layoutX="99.0" layoutY="103.0" prefHeight="25.0" prefWidth="466.0" />
+                        <TextField fx:id="inputEnderecoFornecedor" layoutX="99.0" layoutY="140.0" prefHeight="25.0" prefWidth="466.0" />
+                        <Button fx:id="salvarFornecedor" layoutX="513.0" layoutY="186.0" mnemonicParsing="false" onAction="#onbtSalvarFornecedorAction" text="Salvar" />
+                        <Button fx:id="cancelarFornecedor" layoutX="438.0" layoutY="186.0" mnemonicParsing="false" onAction="#obbtCancelarFornecedorAction" text="Cancelar" />
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Relatório de produto">
+          <Tab text="Adicionar Produto">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -90,15 +90,15 @@
                         <Label layoutX="20.0" layoutY="267.0" text="Peso:" />
                         <Label layoutX="256.0" layoutY="267.0" text="Quantidade em estoque:" />
                         <Label layoutX="20.0" layoutY="310.0" text="Código do Produto:" />
-                        <TextField layoutX="79.0" layoutY="17.0" prefHeight="25.0" prefWidth="487.0" />
-                        <TextField layoutX="125.0" layoutY="60.0" />
-                        <TextField layoutX="396.0" layoutY="60.0" />
-                        <TextField layoutX="64.0" layoutY="263.0" />
-                        <TextField layoutX="396.0" layoutY="263.0" />
-                        <TextArea layoutX="146.0" layoutY="103.0" prefHeight="142.0" prefWidth="400.0" />
-                        <TextField layoutX="146.0" layoutY="306.0" />
-                        <Button layoutX="493.0" layoutY="327.0" mnemonicParsing="false" text="Salvar" />
-                        <Button layoutX="419.0" layoutY="327.0" mnemonicParsing="false" text="Cancelar" />
+                        <TextField fx:id="inputNomeProduto" layoutX="79.0" layoutY="17.0" prefHeight="25.0" prefWidth="487.0" />
+                        <TextField fx:id="inputValorCompra" layoutX="125.0" layoutY="60.0" />
+                        <TextField fx:id="inputValorVenda" layoutX="396.0" layoutY="60.0" />
+                        <TextField fx:id="inputPeso" layoutX="64.0" layoutY="263.0" />
+                        <TextField fx:id="inputQtd" layoutX="396.0" layoutY="263.0" />
+                        <TextArea fx:id="inputDescricaoProduto" layoutX="146.0" layoutY="103.0" prefHeight="142.0" prefWidth="400.0" />
+                        <TextField fx:id="inputCodProd" layoutX="146.0" layoutY="306.0" />
+                        <Button fx:id="btnSalvarProd" layoutX="493.0" layoutY="327.0" mnemonicParsing="false" onAction="#onbtSalvarProd" text="Salvar" />
+                        <Button fx:id="btnCancelarProd" layoutX="419.0" layoutY="327.0" mnemonicParsing="false" onAction="#onbtCancelarProd" text="Cancelar" />
                      </children></AnchorPane>
             </content>
           </Tab>
