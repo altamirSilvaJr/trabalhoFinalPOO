@@ -1,5 +1,6 @@
 package application;
 	
+import gui.ViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,8 @@ public class Main extends Application {
 			Scene scene = new Scene(parent);
 			stage.setScene(scene);
 			stage.show();
+			
+			ViewController.prodInit();		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

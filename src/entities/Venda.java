@@ -1,17 +1,23 @@
 package entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Venda {
-	private List<Produto> produtoVenda = new ArrayList<>();
+	private List<ProdutoVenda> produtoVenda = new ArrayList<>();
     private int descontoVenda;
     private double precoTotalVenda;
-    private Date dataVenda;
+    private LocalDate dataVenda;
     private int codigoVenda;
 
-    public Venda() {
+    public Venda(int descontoVenda, double precoTotalVenda, LocalDate dataVenda) {
+		this.descontoVenda = descontoVenda;
+		this.precoTotalVenda = precoTotalVenda;
+		this.dataVenda = dataVenda;
+	}
+
+	public Venda() {
     }
 
     public int getCodigoVenda() {
@@ -22,11 +28,11 @@ public class Venda {
         this.codigoVenda = codigoVenda;
     }
 
-    public List<Produto> getProdutoVenda() {
+    public List<ProdutoVenda> getProdutoVenda() {
         return produtoVenda;
     }
 
-    public void setProdutoVenda(Produto produtoVenda) {
+    public void setProdutoVenda(ProdutoVenda produtoVenda) {
         this.produtoVenda.add(produtoVenda);
     }
 
@@ -46,28 +52,32 @@ public class Venda {
         this.precoTotalVenda = precoTotalVenda;
     }
 
-    public Date getDataVenda() {
+    public LocalDate getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(LocalDate dataVenda) {
         this.dataVenda = dataVenda;
     }
 
-    public void adicionarVenda(Produto produto){
+    public void adicionarVenda(ProdutoVenda produto){
         this.produtoVenda.add(produto);
     }
 
-    public void retirarProduto(Produto produto){
+    public void retirarProduto(ProdutoVenda produto){
         this.produtoVenda.remove(produto);
     }
 
     public void valorTotal(){
         double preco = 0.0;
-        for(Produto prod : this.produtoVenda){
-            preco += prod.getValorVendaProduto();
+        for(ProdutoVenda prod : this.produtoVenda){
+            preco += prod.getProduto().getValorVendaProduto() * prod.getQtdProduto();
         }
         this.precoTotalVenda = preco - (preco * (this.descontoVenda / 100));
+    }
+    
+    public void inserirProdutos(List<ProdutoVenda> prodVenda) {
+    	this.produtoVenda = prodVenda;
     }
 
     @Override
